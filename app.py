@@ -448,7 +448,6 @@ with tab1:
     
     # 업스케일링 비율 선택
     st.markdown("<h3 style='margin-bottom: 1rem;'>이미지 업스케일링</h3>", unsafe_allow_html=True)
-    st.markdown("<p>이미지를 업스케일링하여 더 높은 해상도로 변환합니다.</p>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 1, 1])
     
     with col1:
@@ -472,7 +471,7 @@ with tab1:
     st.markdown(f"<p style='text-align: center; margin-top: 1rem;'>선택된 배율: <strong>{st.session_state['scale_factor']}x</strong></p>", unsafe_allow_html=True)
     
     # 파일 업로더
-    uploaded_file = st.file_uploader("이미지 업로드 (Real-ESRGAN)", type=["jpg", "jpeg", "png", "webp"], key="upscale_file")
+    uploaded_file = st.file_uploader("이미지 업로드", type=["jpg", "jpeg", "png", "webp"], key="upscale_file")
     
     # 업로드된 이미지가 있는 경우
     if uploaded_file is not None:
@@ -524,10 +523,9 @@ with tab2:
     
     # 배경 제거 설명
     st.markdown("<h3 style='margin-bottom: 1rem;'>배경 제거</h3>", unsafe_allow_html=True)
-    st.markdown("<p>이미지에서 배경을 자동으로 제거합니다.</p>", unsafe_allow_html=True)
     
     # 파일 업로더
-    uploaded_file_bg = st.file_uploader("이미지 업로드 (배경 제거)", type=["jpg", "jpeg", "png", "webp"], key="bg_file")
+    uploaded_file_bg = st.file_uploader("이미지 업로드", type=["jpg", "jpeg", "png", "webp"], key="bg_file")
     
     # 업로드된 이미지가 있는 경우
     if uploaded_file_bg is not None:
