@@ -14,9 +14,18 @@ import toml
 replicate_api_token = st.secrets.get("REPLICATE_API_TOKEN", "")
 fal_key = st.secrets.get("FAL_KEY", "")
 
+# API 키 확인
+if not replicate_api_token:
+    st.error("REPLICATE_API_TOKEN이 설정되지 않았습니다. Streamlit Cloud의 Secrets 설정을 확인하세요.")
+if not fal_key:
+    st.error("FAL_KEY가 설정되지 않았습니다. Streamlit Cloud의 Secrets 설정을 확인하세요.")
+
 # 환경 변수 설정
 os.environ["REPLICATE_API_TOKEN"] = replicate_api_token
 os.environ["FAL_KEY"] = fal_key
+
+# FAL 클라이언트 직접 초기화
+fal_client.api_key = fal_key
 
 # 페이지 설정을 가장 먼저 호출
 st.set_page_config(
@@ -321,9 +330,9 @@ def upload_image_to_fal(image):
             image.save(tmp_file, format=img_format if img_format else "PNG")
             temp_image_path = tmp_file.name
         
-        # FAL에 이미지 업로드
+        # FAL에 이미지 업로드 (API 키 직접 전달)
         with open(temp_image_path, "rb") as f:
-            url = fal_client.upload(f.read(), content_type=mime_type)
+            url = fal_client.upload(f.read(), content_type=mime_type, api_key=fal_key)
         return url
     
     except Exception as e:
