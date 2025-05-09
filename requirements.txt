@@ -1,6 +1,6 @@
-streamlit==1.30.0
-replicate==0.22.0
-fal-client==0.9.0
-pillow==10.1.0
-requests==2.31.0
-python-dotenv==1.0.0 
+streamlit
+replicate
+fal-client
+pillow
+requests
+python-dotenv
