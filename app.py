@@ -35,6 +35,15 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# 로고 이미지 표시
+try:
+    logo_image = Image.open("assets/logo.png")
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image(logo_image, width=300)
+except Exception as e:
+    st.write("로고 이미지를 불러오는 중 오류가 발생했습니다.")
+
 # 이미지 비교 컴포넌트 함수 정의
 def image_comparison(
     img1, 
