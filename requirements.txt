@@ -4,3 +4,4 @@ fal-client
 pillow
 requests
 python-dotenv
+toml

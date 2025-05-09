@@ -8,17 +8,21 @@ import requests
 import replicate
 import fal_client
 import os
-from dotenv import load_dotenv
+import toml
 
-# .env 파일 로드
-load_dotenv()
-
+# config.toml 파일 로드
+config = toml.load("config.toml")
 # API 키 확인
-if "REPLICATE_API_TOKEN" not in os.environ:
-    st.error("REPLICATE_API_TOKEN이 설정되지 않았습니다. .env 파일을 확인하세요.")
+if "REPLICATE_API_TOKEN" not in config['global']:
+    st.error("REPLICATE_API_TOKEN이 설정되지 않았습니다. config.toml 파일을 확인하세요.")
+else:
+    os.environ["REPLICATE_API_TOKEN"] = config['global']["REPLICATE_API_TOKEN"]
 
-if "FAL_KEY" not in os.environ:
-    st.error("FAL_KEY가 설정되지 않았습니다. .env 파일을 확인하세요.")
+if "FAL_KEY" not in config['global']:
+    st.error("FAL_KEY가 설정되지 않았습니다. config.toml 파일을 확인하세요.")
+else:
+    os.environ["FAL_KEY"] = config['global']["FAL_KEY"]
+
 
 # 페이지 설정을 가장 먼저 호출
 st.set_page_config(
