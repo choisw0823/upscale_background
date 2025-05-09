@@ -10,19 +10,11 @@ import fal_client
 import os
 import toml
 
-# config.toml 파일 로드
-config = toml.load("config.toml")
-# API 키 확인
-if "REPLICATE_API_TOKEN" not in config['global']:
-    st.error("REPLICATE_API_TOKEN이 설정되지 않았습니다. config.toml 파일을 확인하세요.")
-else:
-    os.environ["REPLICATE_API_TOKEN"] = config['global']["REPLICATE_API_TOKEN"]
+replicate_api_token = st.secrets["general"]["replicate_api_token"]
+fal_key = st.secrets["general"]["fal_key"]
 
-if "FAL_KEY" not in config['global']:
-    st.error("FAL_KEY가 설정되지 않았습니다. config.toml 파일을 확인하세요.")
-else:
-    os.environ["FAL_KEY"] = config['global']["FAL_KEY"]
-
+os.environ["REPLICATE_API_TOKEN"] = replicate_api_token
+os.environ["FAL_KEY"] = fal_key
 
 # 페이지 설정을 가장 먼저 호출
 st.set_page_config(
