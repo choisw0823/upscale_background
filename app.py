@@ -62,10 +62,6 @@ try:
 except Exception as e:
     st.write(f"로고 이미지를 불러오는 중 오류가 발생했습니다: {str(e)}")
 
-# 헤더 (로고 아래에 위치하도록 여백 추가)
-st.markdown("<div style='margin-top: 60px;'></div>", unsafe_allow_html=True)
-st.markdown("<h1 class='header'>이미지 처리 도구</h1>", unsafe_allow_html=True)
-st.markdown("<p class='subheader'>업스케일링 또는 배경 제거 중 원하는 기능을 선택하세요</p>", unsafe_allow_html=True)
 
 # 이미지 비교 컴포넌트 함수 정의
 def image_comparison(
