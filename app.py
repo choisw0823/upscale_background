@@ -10,9 +10,11 @@ import fal_client
 import os
 import toml
 
-replicate_api_token = st.secrets["general"]["replicate_api_token"]
-fal_key = st.secrets["general"]["fal_key"]
+# API 키 가져오기
+replicate_api_token = st.secrets.get("replicate_api_token", "")
+fal_key = st.secrets.get("fal_key", "")
 
+# 환경 변수 설정
 os.environ["REPLICATE_API_TOKEN"] = replicate_api_token
 os.environ["FAL_KEY"] = fal_key
 
