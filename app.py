@@ -447,7 +447,8 @@ tab1, tab2 = st.tabs(["🔍 이미지 업스케일링", "✂️ 배경 제거"])
 with tab1:
     
     # 업스케일링 비율 선택
-    
+    st.markdown("<h3 style='margin-bottom: 1rem;'>이미지 업스케일링</h3>", unsafe_allow_html=True)
+    st.markdown("<p>이미지를 업스케일링하여 더 높은 해상도로 변환합니다.</p>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 1, 1])
     
     with col1:
@@ -522,8 +523,8 @@ with tab1:
 with tab2:
     
     # 배경 제거 설명
-    st.markdown("<h3 style='margin-bottom: 1rem;'>배경 제거 도구</h3>", unsafe_allow_html=True)
-    st.markdown("<p>이미지에서 배경을 자동으로 제거하고 투명한 배경으로 변환합니다.</p>", unsafe_allow_html=True)
+    st.markdown("<h3 style='margin-bottom: 1rem;'>배경 제거</h3>", unsafe_allow_html=True)
+    st.markdown("<p>이미지에서 배경을 자동으로 제거합니다.</p>", unsafe_allow_html=True)
     
     # 파일 업로더
     uploaded_file_bg = st.file_uploader("이미지 업로드 (배경 제거)", type=["jpg", "jpeg", "png", "webp"], key="bg_file")
